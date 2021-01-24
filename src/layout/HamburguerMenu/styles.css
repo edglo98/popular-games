@@ -1,0 +1,26 @@
+.hamburguer-menu{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    cursor: pointer;
+}
+.hamburguer-menu__line{
+    height: 4px;
+    width: 100%;
+    border-radius: 2px;
+    background-color: var(--dark);
+    transition: transform 0.4s, background-color 0.4s;
+}
+
+.hamburguer-menu__cancel:nth-child(1){
+    transform: rotate( -45deg ) translateY( 180% ) translateX( -22% );
+}
+.hamburguer-menu__cancel:nth-child(2){
+    transform: rotate( 45deg ) translateY( -8% ) translateX( 3% );
+}
+.hamburguer-menu__cancel:nth-child(3){
+    background-color: transparent;
+}

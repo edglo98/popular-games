@@ -1,4 +1,14 @@
+:root {
+  /* colores extraidos a partir de una imagen con adobe color */
+  --dark: #024040;
+  --green:  #38A640;
+  --greenMedium: #A2BF39;
+  --greenIntense: #D2D907;
+  --light: #F2E8B3;
+  --grey: #292929;
+}
 body {
+  color: var(--dark);
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -10,4 +20,8 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+a{
+  text-decoration: none;
 }
