@@ -28,31 +28,31 @@ export default function Navbar() {
 
             <ul  className={`navbar-menu ${menu || "navbar-menu__close"}`}>
                 <NavLink 
-                    to="/character" 
+                    to="/Games" 
                     className="navbar-menu__link" 
                     activeClassName="navbar-menu__active"
                 >
-                    Personajes
+                    Juegos
                 </NavLink>
                 <NavLink 
-                    to="/episode" 
+                    to="/games" 
                     className="navbar-menu__link"  
                     activeClassName="navbar-menu__active"
                 >
-                    Episodios
+                    XBOX
                 </NavLink>
                 <NavLink 
                     to="/location" 
                     className="navbar-menu__link" 
                     activeClassName="navbar-menu__active"
                 >
-                    Locaciones
+                    PS4
                 </NavLink>
                 <NavLink 
                     to="/login" 
                     className="navbar-menu__link navbar-menu__logout"
                 >
-                    Salir
+                    Cerrar sesión
                 </NavLink>
             </ul>
 
