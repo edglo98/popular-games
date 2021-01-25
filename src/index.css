@@ -7,6 +7,13 @@
   --light: #F2E8B3;
   --grey: #292929;
 }
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
 body {
   color: var(--dark);
   margin: 0;

@@ -10,50 +10,64 @@ export default function LoginForm( { setState, state } ) {
   //               this.parentElement.classList.add('is-active')
   //           })
   //       })
-  const [switchers, setSwitcher]=useState(false)
+  const [switcher, setSwitcher]=useState("login")
+
+  const goLogin = () => {
+    setSwitcher("login")
+  }
+  const goRegister = () => {
+    setSwitcher("register")
+  }
     return (
           <div class="forms-section">
-          <h1 class="section-title">VideoJuegos</h1>
+          <h1 class="section-title">PopGames</h1>
           <div class="forms">
-            <div class="form-wrapper">
-              <button type="button" class="switcher switcher-login">
+
+            <div class={`form-wrapper ${ switcher === "login"  && "is-active" }`}>
+              <button type="button" onClick={goLogin} class="switcher switcher-login">
                 Iniciar Sesion
                 <span class="underline"></span>
               </button>
               <form class="form form-login">
+                <fieldset>
                   <legend>Por favor ingresa tu correo y contraseña para ingresar</legend>
                   <div class="input-block">
                     <label for="login-email">Correo</label>
-                    <input id="login-email" type="email" required/>
+                    <input id="login-email" disabled={switcher === "register"  && true} type="email" required/>
                   </div>
                   <div class="input-block">
                     <label for="login-password">Contraseña</label>
-                    <input id="login-password" type="password" required/>
+                    <input id="login-password" disabled={switcher === "register"  && true} type="password" required/>
                   </div>
+                </fieldset>
                 <button type="submit" class="btn-login">Iniciar Sesion</button>
               </form>
+
             </div>
-            <div class="form-wrapper is-active">
-              <button type="button" class="switcher switcher-signup">
+            <div class={`form-wrapper ${ switcher === "register"  && "is-active" }`}>
+              <button type="button" onClick={goRegister} class="switcher switcher-signup">
                 Registrarse
                 <span class="underline"></span>
               </button>
-              <form class="form form-signup">
               
+              <form class="form form-signup">
+                <fieldset>
+
                   <legend>Por favor ingresa tu correo, contraseña y confirmacion de la contraseña para registrarte</legend>
                   <div class="input-block">
                     <label for="signup-email">correo</label>
-                    <input id="signup-email" type="email" required/>
+                    <input id="signup-email" disabled={switcher === "login"  && true} type="email" required/>
                   </div>
                   <div class="input-block">
                     <label for="signup-password">Contraseña</label>
-                    <input id="signup-password" type="password" required/>
+                    <input id="signup-password" disabled={switcher === "login"  && true}  type="password" required/>
                   </div>
                   <div class="input-block">
                     <label for="signup-password-confirm">Confirmar contraseña</label>
-                    <input id="signup-password-confirm" type="password" required/>
+                    <input id="signup-password-confirm" disabled={switcher === "login"  && true}  type="password" required/>
                   </div>
-                
+
+                </fieldset>
                 <button type="submit" class="btn-signup">Registrarse</button>
               </form>
             </div>
