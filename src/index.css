@@ -1,10 +1,10 @@
 :root {
   /* colores extraidos a partir de una imagen con adobe color */
-  --dark: #024040;
+  --dark: #242323;
   --green:  #38A640;
   --greenMedium: #A2BF39;
   --greenIntense: #D2D907;
-  --light: #F2E8B3;
+  --light: #f8f7f1;
   --grey: #292929;
 }
 
@@ -15,7 +15,8 @@
 }
 
 body {
-  color: var(--dark);
+  background-color: var(--dark);
+  color: var(--light);
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',

@@ -8,7 +8,7 @@
     position: relative;
 }
 .navbar a{
-    color: var(--dark);
+    color: var(--light);
 }
 .navbar-title{
     position: relative;
