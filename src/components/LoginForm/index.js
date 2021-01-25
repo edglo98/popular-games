@@ -15,7 +15,7 @@ export default function LoginForm( { setState, state } ) {
           <div class="forms-section">
           <h1 class="section-title">VideoJuegos</h1>
           <div class="forms">
-            <div class="form-wrapper ">
+            <div class="form-wrapper">
               <button type="button" class="switcher switcher-login">
                 Iniciar Sesion
                 <span class="underline"></span>
@@ -33,8 +33,8 @@ export default function LoginForm( { setState, state } ) {
                 <button type="submit" class="btn-login">Iniciar Sesion</button>
               </form>
             </div>
-            <div class="form-wrapper">
-              <button type="button" class="switcher switcher-signup is-active">
+            <div class="form-wrapper is-active">
+              <button type="button" class="switcher switcher-signup">
                 Registrarse
                 <span class="underline"></span>
               </button>
