@@ -7,7 +7,6 @@
 }
 
 .card-container:hover{
-    transform: scale(1.1);
     box-shadow:0px 0px 15px 0px;
 }
 
@@ -37,7 +36,7 @@
 
 .btn button{
     padding: 0.5rem;
-    background-color: white;
+    background-color: #73AD21;
     border: none;
     transition: 0.2s;
     margin-bottom: 0.5rem;
@@ -45,13 +44,13 @@
 }
 
 .btn button:hover{
-    background: rgba(27, 156, 252, 0.1);
+    background: rgba(255, 255, 255, 0.1);
     transform: scale(1.2);
 }
 
 .btn a{
     text-transform: uppercase;
-    color:royalblue;
+    color: white;
     text-decoration: none;
     font-weight: bold;
 }

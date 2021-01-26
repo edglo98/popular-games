@@ -30,7 +30,7 @@
 .navbar-menu{
     align-content: center;
     display: grid;
-    grid-template-columns: 115px 115px 115px auto;
+    grid-template-columns: 150px 150px 150px auto;
     height: 100%;
     width: 100%;
 }
