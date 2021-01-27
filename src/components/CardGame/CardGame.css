@@ -11,7 +11,7 @@
     justify-self: center;
     border-radius: 5px;
     background-color: var(--dark);
-    border: 3px solid var(--red);
+    border: var(--border);
     position: relative;
     overflow: hidden;
 }
