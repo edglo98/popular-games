@@ -1,6 +1,7 @@
 import React from 'react'
 import CardGame from '../../components/CardGame/CardGame'
 import FirstsGames from '../../components/FirstsGames'
+import SecondsGames from '../../components/SecondsGames'
 import './styles.css'
 
 export default function HomePage() {
@@ -60,13 +61,17 @@ export default function HomePage() {
     }]
 
     const first = arr.slice(0,3)
+    const secondpart = arr.slice(3,7)
     return (
         <>
         <h1 style={{textAlign: "center"}}>
-            Juegos más populares
+            Top 6 juegos más populares
         </h1>
         <FirstsGames
             places={first}
+        />
+        <SecondsGames
+            places={secondpart}
         />
         <h1 style={{textAlign: "center"}}>
             Juegos participando
