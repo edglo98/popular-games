@@ -14,7 +14,11 @@ export default function AppRouter() {
     return (
         <>
         <Navbar/>
-        <div style={{margin: "1rem"}}>
+        <div style={{
+            width: "100%",
+            maxWidth: 1200,
+            margin: "2em auto"
+        }}>
             <Switch>
                 <Route exact path="/" component={ HomePage } />
                 <Route path="/game" component={ GamePage } />
