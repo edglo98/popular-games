@@ -16,15 +16,16 @@ const LinkForm = (props) => {
     const handleSubmit = e => {
         e.preventDefault();
         props.addOrEdit(values);
+        setValues({...initialStateValues})
 
     };
     return (
         <form onSubmit={handleSubmit}>
             <div>
-                <input onChange={handleInputChange} type="text" placeholder="Escriba el título" name="tittle"></input>
+                <input value={values.tittle} onChange={handleInputChange} type="text" placeholder="Escriba el título" name="tittle"></input>
             </div>
             <div>
-                <input onChange={handleInputChange} type="text" placeholder="Escribe la descripción" name="description"></input>
+                <input value={values.description} onChange={handleInputChange} type="text" placeholder="Escribe la descripción" name="description"></input>
             </div>
             <div>
                 <button>
