@@ -11,7 +11,7 @@
     height: 4px;
     width: 100%;
     border-radius: 2px;
-    background-color: var(--dark);
+    background-color: var(--light);
     transition: transform 0.4s, background-color 0.4s;
 }
 
