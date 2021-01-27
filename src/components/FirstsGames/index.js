@@ -19,13 +19,13 @@ function FirstsGames({places}) {
                     }} 
                 />
                 <div>
-                    <img alt={first.title} src={first.img}/>
+                    <img alt={second.title} src={second.img}/>
                 </div>
                 <h2>
-                    {first.title}
+                    {second.title}
                 </h2>
                 <h4>
-                    {first.sub}
+                    {second.sub}
                 </h4>
             </div>
             <div className="firstsplaces__card firstsplaces__card-first">
@@ -39,13 +39,13 @@ function FirstsGames({places}) {
                     }} 
                 />
                 <div>
-                    <img alt={second.title} src={second.img}/>
+                    <img alt={first.title} src={first.img}/>
                 </div>
                 <h2>
-                    {second.title}   
+                    {first.title}   
                 </h2>
                 <h4>
-                    {second.sub}
+                    {first.sub}
                 </h4>
             </div>
             <div className="firstsplaces__card firstsplaces__card-third">
