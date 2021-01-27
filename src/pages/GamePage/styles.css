@@ -25,7 +25,7 @@
     height: 13rem;
     overflow: hidden;
     position: relative;
-    box-shadow: 2px 2px 15px #00000080;
+    box-shadow: var(--shadow);
     border-radius: 1rem;
 }
 

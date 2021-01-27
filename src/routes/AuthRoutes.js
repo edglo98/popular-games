@@ -14,6 +14,7 @@ export default function DashboardRoute() {
     return (
         <Router>
             <Switch>
+                
                 <Route exact path="/login" component={ LoginPage } />
                 <Route exact path="/register" component={ RegisterPage } />
                 <Route path="/" component={ MainRoutes } />

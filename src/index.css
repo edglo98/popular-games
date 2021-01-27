@@ -1,11 +1,12 @@
 :root {
   /* colores extraidos a partir de una imagen con adobe color */
   --dark: #242323;
-  --green:  #38A640;
+  --red:  #e8241d;
   --greenMedium: #A2BF39;
   --greenIntense: #D2D907;
   --light: #f8f7f1;
   --grey: #292929;
+  --shadow: 2px 2px 18px #00000090
 }
 
 *,
@@ -23,6 +24,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
 }
 
 code {
