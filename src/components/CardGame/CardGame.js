@@ -1,29 +1,25 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import './CardGame.css'
 
-function CardGame({tittle,imageUrl,body}) {
+function CardGame({title,img,sub}) {
     return (
-        <div className='card-container'>
-                <div className='image-container'>
-                    <img src={imageUrl} alt='' />
-                </div>
-                <div className='card-content'>
-                    <div className='card-tittle'>
-                        <h3>{tittle}</h3>
-                    </div>
-                    <div className='card-body'>
-                        <p>{body}</p>
-                    </div>
-                <div className='btn'>
-                    <button>
-                        <a>
-                            Ver más
-                        </a>
-                    </button>
-                </div>
+        <div className='cardgame-container'>
+            <div className='cardgame__image-container'>
+                <img src={img} alt='' />
+            </div>
+            <div className='cardgame-content'>
+                <h3>{title}</h3>
+                <p>{sub}</p>
             </div>
         </div>
     )
+}
+
+CardGame.propTypes = {
+    title: PropTypes.string.isRequired,
+    img: PropTypes.string,
+    sub: PropTypes.string
 }
 
 export default CardGame

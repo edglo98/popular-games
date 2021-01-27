@@ -5,7 +5,11 @@
     height: 5vw;
     min-height: 65px;
     max-height: 80px;
-    position: relative;
+    position: sticky;
+    top: 0;
+    background-color: var(--dark);
+    z-index: 1;
+    border-bottom: 1px solid var(--light);
 }
 .navbar a{
     color: var(--light);
@@ -56,6 +60,9 @@
 
 
 @media (max-width: 780px) {
+    .navbar{
+        border-bottom: none;
+    }
     .hamburguer-menu_view{
         display: block;
     }
@@ -64,7 +71,10 @@
         text-align: center;
     }
     .navbar-menu {
-        background-color: var(--green);
+        
+        border-top: 1px solid var(--light);
+        border-bottom: 1px solid var(--light);
+        background-color: var(--red);
         position: absolute;
         grid-template-rows: 80px 80px 80px 80px;
         grid-template-columns: 1fr;

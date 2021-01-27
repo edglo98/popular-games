@@ -13,7 +13,12 @@ import DashCrud from '../pages/DashCrud'
 export default function AppRouter() {
     return (
         <>
-            <Navbar/>
+        <Navbar/>
+        <div style={{
+            width: "100%",
+            maxWidth: 1200,
+            margin: "2em auto"
+        }}>
             <Switch>
                 <Route exact path="/" component={ HomePage } />
                 <Route path="/game" component={ GamePage } />
@@ -21,6 +26,8 @@ export default function AppRouter() {
 
                 <Redirect to="/" />
             </Switch>
+
+        </div>
         </>
     )
 }
