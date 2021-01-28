@@ -1,10 +1,12 @@
 import React, {useState} from 'react'
 
+
 const LinkForm = (props) => {
 
     const initialStateValues = {
         tittle:'',
         description:'',
+        company:'',
     };
     const [values, setValues] = useState(initialStateValues);
 
@@ -26,6 +28,9 @@ const LinkForm = (props) => {
             </div>
             <div>
                 <input value={values.description} onChange={handleInputChange} type="text" placeholder="Escribe la descripción" name="description"></input>
+            </div>
+            <div>
+                <input value={values.company} onChange={handleInputChange} type="text" placeholder="Escribe la compañia" name="company"></input>
             </div>
             <div>
                 <button>

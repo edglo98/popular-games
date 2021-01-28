@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import LinkForm from '../../components/LinkForm/LinkForm'
 import {db} from '../../firebase'
+import {toast} from 'react-toastify'    
 
 const Links = () => {
 
@@ -8,8 +9,20 @@ const Links = () => {
 
     const addOrEdit = async (linkObject) =>{
          await db.collection('links').doc().set(linkObject);
-         console.log('new task added')
+         toast('Nueva sugerencia añadida',{
+             type:'success'
+         })
     };
+
+    const onDelete = async (id) => {
+        if(window.confirm('¿Estás seguro de eliminar esta sugerencia?')){
+            await db.collection('links').doc(id).delete();
+            toast('Sugerencia eliminada ',{
+                type:'error',
+                autoClose:2000,
+                })
+        }
+    }
 
     const getLinks = async () =>{
         db.collection("links").onSnapshot(
@@ -20,7 +33,6 @@ const Links = () => {
                 });
                 setLinks(docs);
         });
-        
     }
 
     useEffect(() =>{
@@ -32,10 +44,17 @@ const Links = () => {
         <LinkForm addOrEdit={addOrEdit}/> 
             <h1>Videojuegos</h1>
             {links.map(link => (
-                <div>
-                    <h4>{link.tittle}</h4>
-                    <p>{link.description    }</p>
+
+                <div className='cardgame-container-list' key={link.id}>
+                        <i className="material-icons" 
+                        onClick={() => onDelete(link.id)}>close</i>
+                    <div className='cardgame-content'>
+                        <h4>{link.tittle}</h4>
+                        <p>{link.description}</p>
+                        <p>{link.company}</p>
+                    </div>
                 </div>
+
             ))}        
         </>
     )
