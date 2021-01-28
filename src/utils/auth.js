@@ -1,10 +1,13 @@
-import { firebase, auth } from "../firebase";
+import { firebase, googleAuth } from "../firebase";
 
 export const startGoogleLogin = async() => {
-    await firebase.auth().signInWithPopup( auth.GoogleAuthProvider() )
-        .then( auth => console.log(auth) )
+    return await firebase.auth().signInWithPopup( googleAuth )
 }
 
 export const createNewUser = async(email, password) => {
-    await firebase.auth().createUserWithEmailAndPassword( email, password );
+    return await firebase.auth().createUserWithEmailAndPassword( email, password );
+}
+
+export const loginUser = async(email, password) => {
+    return await firebase.auth().signInWithEmailAndPassword( email, password );
 }

@@ -5,7 +5,7 @@ import images from '../../assets/images'
 
 function FirstsGames({places}) {
     const[ first, second, third ] = places
-    console.log(first, second, third)
+    // console.log(first, second, third)
     return (
         <div className="firstsplaces">
             <div className="firstsplaces__card firstsplaces__card-second">
