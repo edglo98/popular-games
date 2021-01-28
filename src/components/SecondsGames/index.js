@@ -11,7 +11,7 @@ function SecondsGames({places}) {
         <div className="secondsgames__container">
             {
                 places.map((item, i)=>(
-                    <div style={{margin: ".5em"}}>
+                    <div key={item.id} style={{margin: ".5em"}}>
                         <div style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
                             <span 
                                 className="secondplaces__icon"
@@ -27,7 +27,7 @@ function SecondsGames({places}) {
                             </h4>
                         </div>
                         <CardGame
-                            key={item.id}
+                            
                             title={item.title}
                             sub={item.sub}
                             img={item.img}

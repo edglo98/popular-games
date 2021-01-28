@@ -5,25 +5,23 @@ import { useHistory } from 'react-router-dom'
 import { UserContext } from '../../context/UserContext'
 import { useForm } from '../../hooks/useForm'
 
-export default function LoginForm( ) {
+export default function RegisterForm( ) {
   const history = useHistory()
   const { setUser } = useContext(UserContext)
   const [values, handleInputChange] = useForm({});
 
-  const handleLogin = () => {
+  const handleRegister = () => {
     setUser({
-      id: 1,
-      logedin: true,
       ...values
     })
     history.push("/")
   }
 
   return (
-    <form className="login__form" onSubmit={ handleLogin }>
+    <form className="register__form" onSubmit={ handleRegister }>
       <img
         alt="gif animado de sonic"
-        className="login__sonic"
+        className="register__sonic"
         src={images.Sonic4} 
       />
       <h1>PopGames</h1>
@@ -33,21 +31,9 @@ export default function LoginForm( ) {
 
       <input type="password" onChange={ handleInputChange } name="password" required placeholder="Escribe tu contraseña" autoComplete="false" />
 
-      <button type="submit" className="login__btn">Iniciar Sesión</button>
-      <legend style={{textAlign: "center"}}>¿Aun no tienes cuenta?</legend>
-      <button onClick={()=> history.push("/register")} type="button" className="btn btn__link">Crear una cuenta</button>
+      <input type="password" onChange={ handleInputChange } name="password2" required placeholder="Repite tu contraseña" autoComplete="false" />
 
-      <button type="button" className="google__btn">
-        <span 
-          className="google__btn-img"
-          style={{
-            background:`url(${images.Google}) no-repeat center`
-          }}
-        />
-        <p>
-          Entrar con Google
-        </p>
-      </button>
+      <button type="submit" className="register__btn">Crear cuenta</button>
 
     </form>
   )

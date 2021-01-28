@@ -28,6 +28,15 @@ export default function Navbar() {
 
             <ul  className={`navbar-menu ${menu || "navbar-menu__close"}`}>
                 <NavLink 
+                    exact
+                    to="/" 
+                    className="navbar-menu__link" 
+                    activeClassName="navbar-menu__active"
+                >
+                    Inicio
+                </NavLink>
+                <NavLink 
+                    exact
                     to="/games" 
                     className="navbar-menu__link" 
                     activeClassName="navbar-menu__active"
@@ -35,18 +44,12 @@ export default function Navbar() {
                     Juegos
                 </NavLink>
                 <NavLink 
+                    exact
                     to="/episode" 
                     className="navbar-menu__link"  
                     activeClassName="navbar-menu__active"
                 >
                     Episodios
-                </NavLink>
-                <NavLink 
-                    to="/location" 
-                    className="navbar-menu__link" 
-                    activeClassName="navbar-menu__active"
-                >
-                    Locaciones
                 </NavLink>
                 <NavLink 
                     to="/login" 

@@ -7,6 +7,7 @@ import {
 import HomePage from '../pages/HomePage'
 import Navbar from "../layout/Navbar"
 import GamePage from '../pages/GamePage'
+import GamesPage from '../pages/GamesPage'
 import DashCrud from '../pages/DashCrud'
 
 
@@ -22,6 +23,7 @@ export default function AppRouter() {
             <Switch>
                 <Route exact path="/" component={ HomePage } />
                 <Route path="/game" component={ GamePage } />
+                <Route path="/games" component={ GamesPage } />
                 <Route path="/dashcrud" component={ DashCrud } />
 
                 <Redirect to="/" />
