@@ -67,9 +67,9 @@ export default function HomePage() {
     const secondpart = arr.slice(3,7)
     return (
         <>
-        <pre>
+        {/* <pre>
             {JSON.stringify(user, null, 4)}
-        </pre>
+        </pre> */}
         <h1 style={{textAlign: "center"}}>
             Top 6 juegos más populares
         </h1>

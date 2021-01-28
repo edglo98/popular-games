@@ -45,11 +45,11 @@ export default function Navbar() {
                 </NavLink>
                 <NavLink 
                     exact
-                    to="/episode" 
+                    to="/recomended" 
                     className="navbar-menu__link"  
                     activeClassName="navbar-menu__active"
                 >
-                    Episodios
+                    Recomendar
                 </NavLink>
                 <NavLink 
                     to="/login" 

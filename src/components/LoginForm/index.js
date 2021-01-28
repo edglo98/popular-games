@@ -17,7 +17,7 @@ export default function LoginForm( ) {
   const handleLogin = async(e) => {
     e.preventDefault()
     setLoading(true)
-    await loginUser(values.email, values.password, values.userName)
+    await loginUser(values.email, values.password)
     .then( currentUser => setUser({logedin: true, ...currentUser}) )
     .then( ()=> history.push("/") )
     .catch( err => setError(err))

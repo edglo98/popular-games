@@ -17,11 +17,15 @@ export default function RegisterForm( ) {
     const handleRegister = async(e) => {
         setLoading(true)
         e.preventDefault()
-        await createNewUser(values.email, values.password, values.userName)
-        .then( currentUser => setUser({logedin: true, ...currentUser}) )
-        .then( ()=> history.push("/") )
-        .catch( err => setError(err))
-        .finally( () => setLoading(false) ) 
+        if(values.password===values.password2){
+            await createNewUser(values.email, values.password, values.userName)
+            .then( currentUser => setUser({logedin: true, ...currentUser}) )
+            .then( ()=> history.push("/") )
+            .catch( err => setError(err))
+            .finally( () => setLoading(false) ) 
+        }else{
+            setError("las contraseñas no coinciden")
+        }
     }
 
     return (
