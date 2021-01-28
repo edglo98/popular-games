@@ -7,6 +7,8 @@ const Links = () => {
 
     const [links, setLinks] = useState([]);
 
+    const [currentId, setCurrentId] = useState('');
+
     const addOrEdit = async (linkObject) =>{
          await db.collection('links').doc().set(linkObject);
          toast('Nueva sugerencia añadida',{
@@ -20,7 +22,7 @@ const Links = () => {
             toast('Sugerencia eliminada ',{
                 type:'error',
                 autoClose:2000,
-                })
+            })
         }
     }
 
@@ -41,13 +43,15 @@ const Links = () => {
     
     return (
         <>
-        <LinkForm addOrEdit={addOrEdit}/> 
+        <LinkForm {...{addOrEdit, currentId, links}}/> 
             <h1>Videojuegos</h1>
             {links.map(link => (
 
                 <div className='cardgame-container-list' key={link.id}>
                         <i className="material-icons" 
                         onClick={() => onDelete(link.id)}>close</i>
+                        <i className="material-icons" 
+                        onClick={() => setCurrentId(link.id)}>create</i>
                     <div className='cardgame-content'>
                         <h4>{link.tittle}</h4>
                         <p>{link.description}</p>
