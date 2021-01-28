@@ -10,10 +10,21 @@ const Links = () => {
     const [currentId, setCurrentId] = useState('');
 
     const addOrEdit = async (linkObject) =>{
-         await db.collection('links').doc().set(linkObject);
-         toast('Nueva sugerencia añadida',{
+
+        if (currentId === ''){
+            await db.collection('links').doc().set(linkObject);
+            toast('Nueva sugerencia añadida',{
              type:'success'
-         })
+             });
+        } else {
+            await db.collection('links').doc(currentId).update(linkObject);
+            toast('Sugerencia actualizada',{
+                type:'info'
+            });
+            setCurrentId('');
+        }
+
+         
     };
 
     const onDelete = async (id) => {

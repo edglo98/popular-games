@@ -11,8 +11,9 @@ const LinkForm = (props) => {
     };
     const [values, setValues] = useState(initialStateValues);
 
-    const getGameId = async(id) =>{
-        cosnt doc = await db.collection('links').doc(id).get();
+    const getGameId = async (id) => {
+        const doc = await db.collection('links').doc(id).get();
+        setValues({...doc.data()})
     }
 
     const handleInputChange = e => {
@@ -22,16 +23,16 @@ const LinkForm = (props) => {
 
     const handleSubmit = e => {
         e.preventDefault();
+
         props.addOrEdit(values);
         setValues({...initialStateValues})
     };
 
     useEffect(() => {
-        console.log(props.currentId)
         if (props.currentId === ''){
             setValues({...initialStateValues});
         } else {
-            console.log('editing')
+            getGameId(props.currentId)
         }
     }, [props.currentId]);
 
@@ -48,7 +49,7 @@ const LinkForm = (props) => {
             </div>
             <div>
                 <button>
-                    save
+                    {props.currentId === '' ? 'Guardar': 'Actualizar'}
                 </button>
             </div>
         </form>
