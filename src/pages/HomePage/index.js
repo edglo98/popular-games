@@ -63,6 +63,7 @@ export default function HomePage() {
 
     
     const {user} = useContext( UserContext )
+    console.log(user)
     const first = arr.slice(0,3)
     const secondpart = arr.slice(3,7)
     return (
