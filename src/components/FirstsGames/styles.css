@@ -21,7 +21,7 @@
     cursor: pointer;
 }
 .firstsplaces__card{
-    border: 3px solid var(--red);
+    border: var(--border);
     background-color: var(--dark);
     width: 100%;
     min-width: 13.5em;

@@ -28,11 +28,11 @@ export default function Navbar() {
 
             <ul  className={`navbar-menu ${menu || "navbar-menu__close"}`}>
                 <NavLink 
-                    to="/character" 
+                    to="/games" 
                     className="navbar-menu__link" 
                     activeClassName="navbar-menu__active"
                 >
-                    Personajes
+                    Juegos
                 </NavLink>
                 <NavLink 
                     to="/episode" 
