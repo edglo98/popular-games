@@ -64,3 +64,16 @@
 .cardgame-content p,.cardgame-content h3{
     text-align: center;
 }
+
+.cardgame-container-list{
+    width: 100%;
+    min-width: 17.5em;
+    max-width: 17em;
+    height: 18em;
+    box-shadow: var(--shadow);
+    border-radius: 5px;
+    background-color: var(--dark);
+    border: 3px solid var(--red);
+    position: relative;
+    overflow: hidden;
+}
