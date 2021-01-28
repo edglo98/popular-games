@@ -1,4 +1,5 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
+import { db } from '../../firebase';
 
 
 const LinkForm = (props) => {
@@ -10,6 +11,11 @@ const LinkForm = (props) => {
     };
     const [values, setValues] = useState(initialStateValues);
 
+    const getGameId = async (id) => {
+        const doc = await db.collection('links').doc(id).get();
+        setValues({...doc.data()})
+    }
+
     const handleInputChange = e => {
         const {name, value} = e.target;
         setValues({...values, [name]: value})
@@ -17,10 +23,19 @@ const LinkForm = (props) => {
 
     const handleSubmit = e => {
         e.preventDefault();
+
         props.addOrEdit(values);
         setValues({...initialStateValues})
-
     };
+
+    useEffect(() => {
+        if (props.currentId === ''){
+            setValues({...initialStateValues});
+        } else {
+            getGameId(props.currentId)
+        }
+    }, [props.currentId]);
+
     return (
         <form onSubmit={handleSubmit}>
             <div>
@@ -34,7 +49,7 @@ const LinkForm = (props) => {
             </div>
             <div>
                 <button>
-                    save
+                    {props.currentId === '' ? 'Guardar': 'Actualizar'}
                 </button>
             </div>
         </form>
