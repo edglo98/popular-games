@@ -1,32 +1,42 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import "./styles.css"
 import images from '../../assets/images'
 import { useHistory } from 'react-router-dom'
 import { UserContext } from '../../context/UserContext'
 import { useForm } from '../../hooks/useForm'
-import { startGoogleLogin } from '../../utils/auth'
+import { loginUser, startGoogleLogin } from '../../utils/auth'
+import Spinner from '../../components/Spinner'
 
 export default function LoginForm( ) {
   const history = useHistory()
   const { setUser } = useContext(UserContext)
-  const [values, handleInputChange] = useForm({});
+  const [values, handleInputChange] = useForm({})
+  const [error, setError] = useState("")
+  const [loading, setLoading] = useState(false)
 
-  const handleLogin = () => {
-    setUser({
-      id: 1,
-      logedin: true,
-      ...values
-    })
-    history.push("/")
+  const handleLogin = async(e) => {
+    e.preventDefault()
+    setLoading(true)
+    await loginUser(values.email, values.password, values.userName)
+    .then( currentUser => setUser({logedin: true, ...currentUser}) )
+    .then( ()=> history.push("/") )
+    .catch( err => setError(err))
   }
 
-  const handleGoogleLogin = () => {
-    console.log("login")
-    startGoogleLogin()
+  const handleGoogleLogin = async(e) => {
+    e.preventDefault()
+    setLoading(true)
+    await startGoogleLogin()
+    .then( currentUser => setUser({logedin: true, ...currentUser}) )
+    .then( ()=> history.push("/") )
+    .catch( err => setError(err))
+    .finally( () => setLoading(false) ) 
   }
+  // console.log(user)
 
   return (
     <form className="login__form" onSubmit={ handleLogin }>
+      {error?.message}
       <img
         alt="gif animado de sonic"
         className="login__sonic"
@@ -39,7 +49,7 @@ export default function LoginForm( ) {
 
       <input type="password" onChange={ handleInputChange } name="password" required placeholder="Escribe tu contraseña" autoComplete="false" />
 
-      <button type="submit" className="login__btn">Iniciar Sesión</button>
+      <button type="submit" className="login__btn">{loading? <Spinner/>: "Iniciar sesión"}</button>
       <legend style={{textAlign: "center"}}>¿Aun no tienes cuenta?</legend>
       <button onClick={()=> history.push("/register")} type="button" className="btn btn__link">Crear una cuenta</button>
 
