@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import CardGame from '../../components/CardGame/CardGame'
 import FirstsGames from '../../components/FirstsGames'
 import SecondsGames from '../../components/SecondsGames'
+import { UserContext } from '../../context/UserContext'
 import './styles.css'
 
 export default function HomePage() {
@@ -60,10 +61,15 @@ export default function HomePage() {
         img:'https://thegameawards.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fthe-game-awards-api.appspot.com%2F1%2F2020%2F11%2FDOOM_Eternal_1080x1080_opt.jpg&w=3840&q=75',
     }]
 
+    
+    const {user} = useContext( UserContext )
     const first = arr.slice(0,3)
     const secondpart = arr.slice(3,7)
     return (
         <>
+        <pre>
+            {JSON.stringify(user, null, 4)}
+        </pre>
         <h1 style={{textAlign: "center"}}>
             Top 6 juegos más populares
         </h1>
