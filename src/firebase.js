@@ -1,7 +1,8 @@
 import firebase from 'firebase/app'
 import 'firebase/firestore'
+import 'firebase/auth'
 
-var firebaseConfig = {
+  const firebaseConfig = {
     apiKey: "AIzaSyAoIypVOWyL1RnRdB0c5QQA57N8UcBW1vQ",
     authDomain: "react-crud-2380f.firebaseapp.com",
     projectId: "react-crud-2380f",
@@ -10,6 +11,13 @@ var firebaseConfig = {
     appId: "1:959020494086:web:ae9160b5105b9676f6c287"
   };
   // Initialize Firebase
-  const react = firebase.initializeApp(firebaseConfig);
+  firebase.initializeApp(firebaseConfig);
   
-  export const db = react.firestore();
+  const db = firebase.firestore();
+  const auth = new firebase.auth();
+
+  export {
+    db,
+    auth,
+    firebase
+  }

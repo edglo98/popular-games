@@ -1,18 +1,13 @@
-import { useState } from 'react';
-import { UserContext } from './context/UserContext';
+import { AuthUserContext } from './context/UserContext';
 import AuthRoutes from './routes/AuthRoutes'
 function App() {
   
-  const [ user, setUser ] = useState({
-    id: null,
-    logedin: false
-  })
-
   return (
-    <UserContext.Provider value={{ user, setUser }} >
+    <AuthUserContext>
       <AuthRoutes />
-    </UserContext.Provider>
+    </AuthUserContext>
   );
+  
 }
 
 export default App;

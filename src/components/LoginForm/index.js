@@ -4,6 +4,7 @@ import images from '../../assets/images'
 import { useHistory } from 'react-router-dom'
 import { UserContext } from '../../context/UserContext'
 import { useForm } from '../../hooks/useForm'
+import { startGoogleLogin } from '../../utils/auth'
 
 export default function LoginForm( ) {
   const history = useHistory()
@@ -17,6 +18,11 @@ export default function LoginForm( ) {
       ...values
     })
     history.push("/")
+  }
+
+  const handleGoogleLogin = () => {
+    console.log("login")
+    startGoogleLogin()
   }
 
   return (
@@ -37,7 +43,7 @@ export default function LoginForm( ) {
       <legend style={{textAlign: "center"}}>¿Aun no tienes cuenta?</legend>
       <button onClick={()=> history.push("/register")} type="button" className="btn btn__link">Crear una cuenta</button>
 
-      <button type="button" className="google__btn">
+      <button onClick={ handleGoogleLogin } type="button" className="google__btn">
         <span 
           className="google__btn-img"
           style={{
