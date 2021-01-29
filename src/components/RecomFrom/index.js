@@ -69,40 +69,8 @@ export default function RegisterForm( ) {
         })
     }
 
-    const initialStateValues = {
-        tittle:'',
-        description:'',
-        company:'',
-    };
-    const [values, setValues] = useState(initialStateValues);
-
-    const getGameId = async (id) => {
-        const doc = await db.collection('links').doc(id).get();
-        setValues({...doc.data()})
-    }
-
-    const handleInputChange = e => {
-        const {name, value} = e.target;
-        setValues({...values, [name]: value})
-    };
-
-    const handleSubmit = e => {
-        e.preventDefault();
-
-        props.addOrEdit(values);
-        setValues({...initialStateValues})
-    };
-
-    useEffect(() => {
-        if (props.currentId === ''){
-            setValues({...initialStateValues});
-        } else {
-            getGameId(props.currentId)
-        }
-    }, [props.currentId]);
-    
     return (
-        <form className="recom__form" onSubmit={handleSubmit}>
+        <form className="recom__form" onSubmit={ handleSubmit }>
             {error?.message}
             
             <img
@@ -112,23 +80,9 @@ export default function RegisterForm( ) {
             />
             <h1></h1>
 
-            <input 
-            value={values.tittle} 
-            className="form__input" 
-            type="text" 
-            onChange={ handleInputChange } 
-            name="name" 
-            required placeholder="Escribe el nombre completo del juego" 
-            autoComplete="false" />
+            <input className="form__input" type="text" onChange={ handleInputChange } name="name" required placeholder="Escribe el nombre completo del juego" autoComplete="false" />
 
-            <input 
-            value={values.company} 
-            className="form__input" 
-            type="text" 
-            onChange={ handleInputChange } 
-            name="company" 
-            required placeholder="Escribe el estudio al que pertenece" 
-            autoComplete="false" />
+            <input className="form__input" type="text" onChange={ handleInputChange } name="company" required placeholder="Escribe el estudio al que pertenece" autoComplete="false" />
             
             <select className="form__input" onChange={handleInputChange} name="plataform">
 
@@ -148,13 +102,8 @@ export default function RegisterForm( ) {
             </progress>
             <InputFile previews={values.img_url && URL.createObjectURL(values?.img_url)} onChange={ handleInputChange } name="img_url" placeholder="igresa una imagen" />
 
-            <button 
-            className="btn btn__primary">
-                {props.currentId === '' ? 'Guardar': 'Actualizar'}
-            </button>
+            <button type="submit" className="btn btn__primary">{loading? <Spinner/>: "Crear cuenta"}</button>
 
         </form>
     )
 }
-
-export default RegisterForm
