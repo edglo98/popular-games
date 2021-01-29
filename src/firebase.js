@@ -32,7 +32,6 @@ import 'firebase/auth'
     messagingSenderId: "427354903982",
     appId: "1:427354903982:web:772f2f2e2a61df812ae43f"
   */
-
     /* david
     apiKey: "AIzaSyAoIypVOWyL1RnRdB0c5QQA57N8UcBW1vQ",
     authDomain: "react-crud-2380f.firebaseapp.com",
