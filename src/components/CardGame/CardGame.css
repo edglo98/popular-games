@@ -1,0 +1,79 @@
+.cardgame-container{
+    width: 100%;
+    min-width: 17.5em;
+    max-width: 17em;
+    height: 18em;
+    box-shadow: var(--shadow);
+    transition: 0.3s;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-self: center;
+    border-radius: 5px;
+    background-color: var(--dark);
+    border: var(--border);
+    position: relative;
+    overflow: hidden;
+}
+
+.cardgame-container:hover{
+    transform: scale(1.04);
+}
+.cardgame-container::after{
+    content: "Ver más";
+    width: 100%;
+    position: absolute;
+    font-size: 1.5em;
+    color: var(--light);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: -200%;
+    margin: auto;
+    display: grid;
+    place-items: center;
+    background-color: #00000099;
+    transition: left .3s;
+}
+.cardgame-container:hover::after{
+    left: 0%;
+}
+.cardgame__image-container{
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.cardgame__image-container img{
+    position: absolute;
+    height: 100%;
+    right: -175%;
+    left: -175%;
+    margin: auto;
+}
+
+.cardgame-content{
+    padding: .5em;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+.cardgame-content h3{
+    color: var(--red);
+}
+.cardgame-content p,.cardgame-content h3{
+    text-align: center;
+}
+
+.cardgame-container-list{
+    width: 100%;
+    min-width: 17.5em;
+    max-width: 17em;
+    height: 18em;
+    box-shadow: var(--shadow);
+    border-radius: 5px;
+    background-color: var(--dark);
+    border: 3px solid var(--red);
+    position: relative;
+    overflow: hidden;
+}

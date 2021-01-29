@@ -1,0 +1,12 @@
+.recom__form{
+	display: flex;
+	flex-direction: column;
+	background-color: var(--dark);
+	padding: 2.5em;
+	border-radius: 5px;
+	border: var(--border);
+    width: 90%;
+    margin: auto;
+	max-width: 30em;
+	min-width: 16em;
+}

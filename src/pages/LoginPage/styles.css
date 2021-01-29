@@ -1,0 +1,37 @@
+.login{
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    position: relative;
+    overflow: hidden;
+}
+.login__sonic-bg{
+    position: absolute;
+    bottom: 10px;
+    z-index: -1;
+	width: 7em;
+    margin: auto;
+    left: 0%;
+    animation-name: login;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes login{
+    0%{
+        left: -20%;
+    }
+    50%{
+        left: 110%;
+        transform: scaleX(1);
+    }
+    51%{
+        transform: scaleX(-1);
+    }
+    100%{
+        transform: scaleX(-1);
+        left: -20%;
+    }
+}

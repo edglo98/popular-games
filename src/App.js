@@ -1,9 +1,13 @@
+import { AuthUserContext } from './context/UserContext';
 import AuthRoutes from './routes/AuthRoutes'
-
 function App() {
+  
   return (
-    <AuthRoutes />
+    <AuthUserContext>
+      <AuthRoutes />
+    </AuthUserContext>
   );
+  
 }
 
 export default App;
