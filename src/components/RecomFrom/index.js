@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import "./styles.css"
-import images from '../../assets/images'
-import { useForm } from '../../hooks/useForm'
-import Spinner from '../../components/Spinner'
-import InputFile from '../InputFile'
-import { toast } from 'react-toastify'
 import firebase from 'firebase'
+import InputFile from '../InputFile'
+import images from '../../assets/images'
+import Spinner from '../../components/Spinner'
 import { db } from '../../firebase'
+import { useForm } from '../../hooks/useForm'
+import { toast } from 'react-toastify'
 
 export default function RegisterForm( ) {
     // const { setUser } = useContext(UserContext)
@@ -94,8 +94,7 @@ export default function RegisterForm( ) {
                 className="register__sonic"
                 src={images.Sonic5} 
             />
-            <h1></h1>
-
+            
             <input className="form__input" value={values.name} type="text" onChange={ handleInputChange } name="name" required placeholder="Escribe el nombre completo del juego" autoComplete="false" />
 
             <input className="form__input" value={values.company} type="text" onChange={ handleInputChange } name="company" required placeholder="Escribe el estudio al que pertenece" autoComplete="false" />
