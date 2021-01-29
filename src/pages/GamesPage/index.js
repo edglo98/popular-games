@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react'
 import CardGame from '../../components/CardGame/CardGame'
-import RecomPage from '../../pages/RecomPage/index'
 import {db} from '../../firebase'
 
 export default function GamesPage() {

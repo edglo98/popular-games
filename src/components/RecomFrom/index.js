@@ -35,39 +35,54 @@ export default function RegisterForm( ) {
         e.preventDefault()
         setLoading(true)
 
+        
         const { imgFile, recomData } = handleParseData(values)
-
-        const storageRef = firebase.storage().ref(`pictures/${imgFile.name}`)
-        const task = storageRef.put(imgFile)
-
-        task.on('state_changed',snapshot=>{
-            let percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            setPorsentage(
-                percentage
-            )
-        },error=>{
-            setError(error)
-        },()=>{
-            //promesa dos
-            task.snapshot.ref.getDownloadURL().then(downloadURL=>{
-                const finalData = {
-                    ...recomData,
-                    image_url: downloadURL
-                }
-                db.collection('recommendations').doc().set(finalData)
-                .then(()=>{
-                    toast.dark("Su propuesta se ha enviado con exito 🤗")
-                })
-                .catch(error=>{
-                    setError(error)
-                })
-                .finally(()=>{
-                    setLoading(false)
-                    setPorsentage(0)
-                    resetValues()
+        if(imgFile){
+            const storageRef = firebase.storage().ref(`pictures/${imgFile.name}`)
+            const task = storageRef.put(imgFile)
+    
+            task.on('state_changed',snapshot=>{
+                let percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                setPorsentage(
+                    percentage
+                )
+            },error=>{
+                setError(error)
+            },()=>{
+                //promesa dos
+                task.snapshot.ref.getDownloadURL().then(downloadURL=>{
+                    const finalData = {
+                        ...recomData,
+                        image_url: downloadURL
+                    }
+                    db.collection('recommendations').doc().set(finalData)
+                    .then(()=>{
+                        toast.dark("Su propuesta se ha enviado con exito 🤗")
+                    })
+                    .catch(error=>{
+                        setError(error)
+                    })
+                    .finally(()=>{
+                        setLoading(false)
+                        setPorsentage(0)
+                        resetValues()
+                    })
                 })
             })
-        })
+        }
+        db.collection('recommendations').doc().set(recomData)
+                    .then(()=>{
+                        toast.dark("Su propuesta se ha enviado con exito 🤗")
+                    })
+                    .catch(error=>{
+                        setError(error)
+                    })
+                    .finally(()=>{
+                        setLoading(false)
+                        setPorsentage(0)
+                        resetValues()
+                    })
+
     }
 
     return (

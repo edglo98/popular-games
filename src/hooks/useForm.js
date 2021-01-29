@@ -1,7 +1,12 @@
 import { useState } from 'react';
 
 
-export const useForm = ( initialState = {} ) => {
+export const useForm = ( initialState = {
+    name: "",
+    company: "",
+    plataform: "",
+    description: ""
+} ) => {
     
     const [values, setValues] = useState(initialState);
 
