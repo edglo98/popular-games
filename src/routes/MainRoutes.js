@@ -10,12 +10,17 @@ import GamePage from '../pages/GamePage'
 import GamesPage from '../pages/GamesPage'
 import DashCrud from '../pages/DashCrud'
 import RecomPage from '../pages/RecomPage';
+import { ToastContainer } from 'react-toastify';
 
 
 export default function AppRouter() {
     return (
         <>
         <Navbar/>
+        <ToastContainer
+            position="top-center"
+            autoClose={2500}
+        />
         <div style={{
             width: "100%",
             maxWidth: 1200,
