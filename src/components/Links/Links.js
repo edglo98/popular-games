@@ -23,8 +23,6 @@ const Links = () => {
             });
             setCurrentId('');
         }
-
-         
     };
 
     const onDelete = async (id) => {

@@ -1,6 +1,8 @@
 import React from 'react'
 import './styles.css'
 import RecomFrom from '../../components/RecomFrom'
+import {ToastContainer} from '../../../node_modules/react-toastify'
+import '../../../node_modules/react-toastify/dist/ReactToastify.css'
 
 export default function RecomPage() {
     return (
@@ -10,6 +12,7 @@ export default function RecomPage() {
             <h5>Porfavor llena la mayor cantidad de campos posibles para poder ayudarte.</h5>
             <div>
                 <RecomFrom />
+                <ToastContainer/>
             </div>
         </div>
     )
