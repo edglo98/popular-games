@@ -36,7 +36,7 @@ const Links = () => {
     }
 
     const getLinks = async () =>{
-        db.collection("links").onSnapshot(
+        db.collection("recommendations").onSnapshot(
             (querySnapshot) =>{
                 const docs = [];
                 querySnapshot.forEach((doc) => {
