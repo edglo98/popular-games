@@ -18,8 +18,15 @@ export default function RegisterForm( ) {
         setLoading(true)
         e.preventDefault()
         if(values.password===values.password2){
-            await createNewUser(values.email, values.password, values.userName)
-            .then( currentUser => setUser({logedin: true, ...currentUser}) )
+            await createNewUser(values.email, values.password)
+            .then( currentUser => {
+                
+                currentUser.user.updateProfile({
+                    displayName: values.displayName
+                });
+                setUser({logedin: true, ...currentUser})
+
+            } )
             .then( ()=> history.push("/") )
             .catch( err => setError(err))
             .finally( () => setLoading(false) ) 
@@ -38,13 +45,13 @@ export default function RegisterForm( ) {
             />
             <h1>PopGames</h1>
 
-            <input type="text" onChange={ handleInputChange } name="displayName" required placeholder="Escribe un nombre de usuario" autoComplete="false" />
+            <input className="form__input" type="text" onChange={ handleInputChange } name="displayName" required placeholder="Escribe un nombre de usuario" autoComplete="false" />
 
-            <input type="email" onChange={ handleInputChange } name="email" required placeholder="Escribe tu email" autoComplete="false" />
+            <input className="form__input" type="email" onChange={ handleInputChange } name="email" required placeholder="Escribe tu email" autoComplete="false" />
 
-            <input type="password" onChange={ handleInputChange } name="password" required placeholder="Escribe tu contraseña" autoComplete="false" />
+            <input className="form__input" type="password" onChange={ handleInputChange } name="password" required placeholder="Escribe tu contraseña" autoComplete="false" />
 
-            <input type="password" onChange={ handleInputChange } name="password2" required placeholder="Repite tu contraseña" autoComplete="false" />
+            <input className="form__input" type="password" onChange={ handleInputChange } name="password2" required placeholder="Repite tu contraseña" autoComplete="false" />
 
             <button type="submit" className="btn btn__primary">{loading? <Spinner/>: "Crear cuenta"}</button>
 

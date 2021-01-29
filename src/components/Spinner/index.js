@@ -10,13 +10,13 @@ export default function Spinner() {
                 placeItems: "center"
             }}
         >
-            <div class="sk-chase">
-                <div class="sk-chase-dot" />
-                <div class="sk-chase-dot" />
-                <div class="sk-chase-dot" />
-                <div class="sk-chase-dot" />
-                <div class="sk-chase-dot" />
-                <div class="sk-chase-dot" />
+            <div className="sk-chase">
+                <div className="sk-chase-dot" />
+                <div className="sk-chase-dot" />
+                <div className="sk-chase-dot" />
+                <div className="sk-chase-dot" />
+                <div className="sk-chase-dot" />
+                <div className="sk-chase-dot" />
             </div>
         </div>
     )

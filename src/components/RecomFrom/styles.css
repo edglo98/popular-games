@@ -1,19 +1,12 @@
-.register__form{
+.recom__form{
 	display: flex;
 	flex-direction: column;
 	background-color: var(--dark);
 	padding: 2.5em;
-	margin: 1em;
 	border-radius: 5px;
 	border: var(--border);
-	width: 90%;
+    width: 90%;
+    margin: auto;
 	max-width: 23em;
 	min-width: 16em;
-}
-.register__form h1{
-	text-align: center;
-}
-.register__sonic{
-	width: 5em;
-	margin: auto;
 }

@@ -21,6 +21,7 @@ export default function LoginForm( ) {
     .then( currentUser => setUser({logedin: true, ...currentUser}) )
     .then( ()=> history.push("/") )
     .catch( err => setError(err))
+    .finally( () => setLoading(false) ) 
   }
 
   const handleGoogleLogin = async(e) => {
@@ -45,12 +46,14 @@ export default function LoginForm( ) {
       <h1>PopGames</h1>
 
 
-      <input type="email" onChange={ handleInputChange } name="email" required placeholder="Escribe tu email" autoComplete="false" />
+      <input className="form__input" type="email" onChange={ handleInputChange } name="email" required placeholder="Escribe tu email" autoComplete="false" />
 
-      <input type="password" onChange={ handleInputChange } name="password" required placeholder="Escribe tu contraseña" autoComplete="false" />
+      <input className="form__input" type="password" onChange={ handleInputChange } name="password" required placeholder="Escribe tu contraseña" autoComplete="false" />
 
-      <button type="submit" className="login__btn">{loading? <Spinner/>: "Iniciar sesión"}</button>
+      <button type="submit" className="btn btn__primary">{loading? <Spinner/>: "Iniciar sesión"}</button>
+
       <legend style={{textAlign: "center"}}>¿Aun no tienes cuenta?</legend>
+
       <button onClick={()=> history.push("/register")} type="button" className="btn btn__link">Crear una cuenta</button>
 
       <button onClick={ handleGoogleLogin } type="button" className="google__btn">

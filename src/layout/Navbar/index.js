@@ -45,7 +45,7 @@ export default function Navbar() {
                 </NavLink>
                 <NavLink 
                     exact
-                    to="/recomended" 
+                    to="/recom" 
                     className="navbar-menu__link"  
                     activeClassName="navbar-menu__active"
                 >
@@ -55,7 +55,7 @@ export default function Navbar() {
                     to="/login" 
                     className="navbar-menu__link navbar-menu__logout"
                 >
-                    Salir
+                    Cerrar sesión
                 </NavLink>
             </ul>
 

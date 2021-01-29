@@ -17,21 +17,6 @@
 	width: 5em;
 	margin: auto;
 }
-.login__form input[type=password],
-.login__form input[type=email]{
-	max-width: 100%;
-	border-radius: 5px;
-	margin: .5rem 0px;
-	padding: 3px;
-	font-size: .9rem;
-	border: 1px solid var(--red);
-	background-color: var(--light);
-}
-
-.login__form input[type=password]:focus,
-.login__form input[type=email]:focus{
-	box-shadow: 0px 0px 10px var(--red);
-}
 
 .login__btn{
 	cursor: pointer;
@@ -52,7 +37,7 @@
 	padding: .2em;
 	border-radius: 15px;
 	position: relative;
-
+	outline: none;
 }
 .google__btn p{
 	font-size: 1.3em;

@@ -4,7 +4,7 @@ export const startGoogleLogin = async() => {
     return await firebase.auth().signInWithPopup( googleAuth )
 }
 
-export const createNewUser = async(email, password) => {
+export const createNewUser = async(email, password ) => {
     return await firebase.auth().createUserWithEmailAndPassword( email, password );
 }
 
