@@ -9,7 +9,7 @@ import firebase from 'firebase'
 import { db } from '../../firebase'
 
 export default function RegisterForm( ) {
-    // const { setUser } = useContext(UserContext)
+    const { setUser } = useContext(UserContext)
     const [values, handleInputChange] = useForm({})
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
