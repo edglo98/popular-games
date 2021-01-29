@@ -10,7 +10,7 @@ import { db } from '../../firebase'
 
 export default function RegisterForm( ) {
     // const { setUser } = useContext(UserContext)
-    const [values, handleInputChange] = useForm({})
+    const [values, handleInputChange, resetValues] = useForm({})
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false)
     const [porcentage, setPorsentage] = useState(0)
@@ -63,7 +63,8 @@ export default function RegisterForm( ) {
                 })
                 .finally(()=>{
                     setLoading(false)
-
+                    setPorsentage(0)
+                    resetValues()
                 })
             })
         })
@@ -80,11 +81,11 @@ export default function RegisterForm( ) {
             />
             <h1></h1>
 
-            <input className="form__input" type="text" onChange={ handleInputChange } name="name" required placeholder="Escribe el nombre completo del juego" autoComplete="false" />
+            <input className="form__input" value={values.name} type="text" onChange={ handleInputChange } name="name" required placeholder="Escribe el nombre completo del juego" autoComplete="false" />
 
-            <input className="form__input" type="text" onChange={ handleInputChange } name="company" required placeholder="Escribe el estudio al que pertenece" autoComplete="false" />
+            <input className="form__input" value={values.company} type="text" onChange={ handleInputChange } name="company" required placeholder="Escribe el estudio al que pertenece" autoComplete="false" />
             
-            <select className="form__input" onChange={handleInputChange} name="plataform">
+            <select className="form__input" value={values.plataform} onChange={handleInputChange} name="plataform">
 
                 <option>Seleccione...</option>
                 <option value="MULTI">Multiplataforma</option>
@@ -95,14 +96,17 @@ export default function RegisterForm( ) {
 
             </select>
 
-            <textarea className="form__input input__textarea" type="textarea" onChange={ handleInputChange } name="description" placeholder="Puedes escribir una pequeña descripcion del juego" autoComplete="false" />
+            <textarea className="form__input input__textarea" value={values.description} type="textarea" onChange={ handleInputChange } name="description" placeholder="Puedes escribir una pequeña descripcion del juego" autoComplete="false" />
            
-            <progress className="form__progress" value={porcentage} max='100'>
-                {porcentage} %
-            </progress>
+            {
+                porcentage > 0 &&
+                <progress className="form__progress" value={porcentage} max='100'>
+                    {porcentage} %
+                </progress>
+            }
             <InputFile previews={values.img_url && URL.createObjectURL(values?.img_url)} onChange={ handleInputChange } name="img_url" placeholder="igresa una imagen" />
 
-            <button type="submit" className="btn btn__primary">{loading? <Spinner/>: "Crear cuenta"}</button>
+            <button type="submit" className="btn btn__primary">{loading? <Spinner/>: "Enviar recomendacion"}</button>
 
         </form>
     )
