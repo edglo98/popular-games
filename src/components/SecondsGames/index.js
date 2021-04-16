@@ -28,9 +28,9 @@ function SecondsGames({places}) {
                         </div>
                         <CardGame
                             
-                            title={item.title}
-                            sub={item.sub}
-                            img={item.img}
+                            title={item.name}
+                            sub={item.company}
+                            img={item.image_url}
                         />
                     </div>
                 ))

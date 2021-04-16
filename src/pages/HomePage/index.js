@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { Spinner } from 'reactstrap'
 import CardGame from '../../components/CardGame/CardGame'
 import FirstsGames from '../../components/FirstsGames'
 import SecondsGames from '../../components/SecondsGames'
+import useRequestCollect from '../../hooks/useRequestCollect'
 import './styles.css'
 
 export default function HomePage() {
@@ -60,9 +62,30 @@ export default function HomePage() {
         img:'https://thegameawards.com/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fthe-game-awards-api.appspot.com%2F1%2F2020%2F11%2FDOOM_Eternal_1080x1080_opt.jpg&w=3840&q=75',
     }]
  
+    const { get, data, loading, error } = useRequestCollect({collection: 'recommendations', filter: ["publish","==",true] })
     // const {user} = useContext( UserContext )
-    const first = arr.slice(0,3)
-    const secondpart = arr.slice(3,7)
+    useEffect(()=>{
+        
+        get([],'rate')
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[ ])
+
+    loading? console.log('cargando...') : console.log(data)
+
+    if(loading || data.length < 1){
+        return <Spinner/>
+    }
+    
+    if( error ){
+        return <div>
+            {error}
+        </div>
+    }
+
+    const first = data.slice(0,3)
+    const secondpart = data.slice(3,7)
+
+    console.log(data)
     return (
         <>
         <h1 style={{textAlign: "center"}}>

@@ -4,7 +4,7 @@ import { GiPirateGrave } from "react-icons/gi";
 import { GiHealthCapsule } from "react-icons/gi";
 import { GiHealthPotion } from "react-icons/gi";
 
-export default function RecomItem({handleDelete, handleUpdate, ...recom}) {
+export default function RecomItem({handleDelete, handleUpdate, handleAdd, ...recom}) {
 
   return (
     <>
@@ -24,7 +24,7 @@ export default function RecomItem({handleDelete, handleUpdate, ...recom}) {
         <h3>
           Descripción
         </h3>
-        <h5>
+        <h5 className='limit-text'>
           {recom.description}
         </h5>
       </div>
@@ -51,7 +51,7 @@ export default function RecomItem({handleDelete, handleUpdate, ...recom}) {
         <button onClick={()=>handleUpdate(recom.id)} className='recom-item-button recom-item-button__bg'>
           <GiHealthPotion />
         </button>
-        <button className='recom-item-button'>
+        <button onClick={()=>handleAdd(recom.id)} className='recom-item-button'>
           <GiHealthCapsule />
         </button>
       </div>

@@ -1,0 +1,7 @@
+.searchingIcon-component{
+  display: block;
+  margin: 5px 10px;
+  width: 20px;
+  height: 20px;
+  mask-size: cover!important;
+}

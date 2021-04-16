@@ -9,6 +9,8 @@
     "bootstrap": "^4.6.0",
     "bootswatch": "4.6.0",
     "firebase": "8.2.4",
+    "lodash": "^4.17.21",
+    "query-string": "^4.3.4",
     "react": "17.0.1",
     "react-bootstrap": "^1.5.2",
     "react-data-table-component": "7.0.0-alpha-5",

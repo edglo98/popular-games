@@ -6,6 +6,7 @@ import Sonic2 from "./sonic2.gif"
 import Sonic5 from "./sonic5.gif"
 import Google from "./google.svg"
 import Upload from "./upload.svg"
+import Loupe from "./loupe.svg"
 
 
 const images = {
@@ -16,6 +17,7 @@ const images = {
     Sonic2,
     Sonic5,
     Google,
-    Upload
+    Upload,
+    Loupe
 }
 export default images

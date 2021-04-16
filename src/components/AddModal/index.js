@@ -1,8 +1,11 @@
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Modal from 'react-modal';
+import { Spinner } from 'reactstrap';
+import useRequestCollect from '../../hooks/useRequestCollect';
 
-export default function AddModal({handler, onClose}) {
+export default function AddModal({handler, idEdit, onClose}) {
+  const [ selecter, setSelecter ] = useState('')
   const customStyles = {
     content : {
       backgroundColor: 'var(--dark)',
@@ -17,6 +20,30 @@ export default function AddModal({handler, onClose}) {
 
   Modal.setAppElement('#root');
 
+  const { update, remove, get, data, loading } = useRequestCollect({collection: 'recommendations', filter: ["publish","==",true] })
+
+  useEffect(()=>{
+    get()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[ ])
+
+  const handleInputChange = (e) => {
+    const { value } = e.target
+    const jsonValue = JSON.parse(value)
+    setSelecter(jsonValue)
+  }
+
+  const handleUpdate = () => {
+    update(selecter.id, { rate: selecter.rate + 1 })
+    .then(()=>{
+      console.log(idEdit)
+      remove(idEdit)
+      .then(()=>{
+        onClose()
+      })
+    })
+  }
+
   return (
     <Modal
       isOpen={handler}
@@ -27,10 +54,22 @@ export default function AddModal({handler, onClose}) {
 
       <h2 >¿Cuál juego es este?</h2>
       <div>Ingresa uno de los valores</div>
-      <input className='form__input' type='text'/>
+
+      <select className="form__input" value={selecter} onClick={()=>get()} onChange={handleInputChange} name="game" style={{width: '100%'}}>
+
+          <option>Videojuego...</option>
+          {
+            loading 
+            ? <Spinner />
+            : data.map( recom => {
+              return <option key={recom.id} value={JSON.stringify(recom)}>{recom.name}</option>
+            })
+          }
+      </select>
+
       <div>
-        <button className="btn btn__primary">Aceptar</button>
-        <button onClick={onClose} className="btn btn__primary">Cancelar</button>
+        <button disabled={loading} className="btn btn__primary" onClick={handleUpdate} >{loading? <Spinner /> : "Aceptar"}</button>
+        <button onClick={onClose} className="btn btn__primary" style={{backgroundColor: 'transparent'}}>Cancelar</button>
       </div>
     </Modal>
   )

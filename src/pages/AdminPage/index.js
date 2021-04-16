@@ -6,14 +6,16 @@ import useRequestCollect from '../../hooks/useRequestCollect'
 
 export default function AdminPage() {
   const [ isOpen, setIsOpen ] = useState(false)
+  const [ idEdit, setIdEdit ] = useState('')
+
   // const [ error, loading, data ] = useCollection({collection: 'recommendations'})
 
-  const { get, remove, data, loading, error } = useRequestCollect({collection: 'recommendations', filter: ["publish","==",false] })
+  const { get, update, remove, data, loading, error } = useRequestCollect({collection: 'recommendations', filter: ["publish","==",false] })
 
   useEffect(()=>{
     get()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[ ])
+  },[ isOpen ])
 
   const handleDelete = (id) => {
     remove(id)
@@ -21,7 +23,11 @@ export default function AdminPage() {
 
   const handleUpdate = (id) => {
     setIsOpen(true)
-    console.log(id)
+    setIdEdit(id)
+  }
+
+  const handleAdd = (id) => {
+    update(id, { publish: true })
   }
 
   const handleCloseModal = () => {
@@ -33,6 +39,7 @@ export default function AdminPage() {
       <AddModal
         handler={isOpen}
         onClose={handleCloseModal}
+        idEdit={idEdit}
       />
       <h1 style={{textAlign: 'center'}}>
         Administra las recomendaciones de los usuarios
@@ -49,6 +56,7 @@ export default function AdminPage() {
                         key={recom.id} 
                         handleDelete={ handleDelete }
                         handleUpdate={ handleUpdate }
+                        handleAdd={ handleAdd }
                         {...recom} 
                       />
               })

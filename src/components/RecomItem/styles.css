@@ -13,6 +13,16 @@
   margin: 0;
 }
 
+.limit-text{
+  line-height: 1.6;
+  margin: 3px;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .recom-item-img {
   width: 100%;
   height: 100%;
