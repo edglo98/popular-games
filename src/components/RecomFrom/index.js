@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react'
+import React, { useState } from 'react'
 import "./styles.css"
 import firebase from 'firebase'
 import InputFile from '../InputFile'
@@ -40,10 +40,14 @@ export default function RegisterForm( ) {
         
         const { imgFile, recomData } = handleParseData(values)
         if(imgFile){
-            const storageRef = firebase.storage().ref(`pictures/${imgFile.name}`)
+            let min = 1718;
+            let max = 3429;
+
+            let x = Math.floor(Math.random()*(max-min+1)+min);
+            const storageRef = firebase.storage().ref(`pictures/${imgFile.name}${x}`)
             const task = storageRef.put(imgFile)
     
-            task.on('state_changed',snapshot=>{
+            return task.on('state_changed',snapshot=>{
                 let percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                 setPorsentage(
                     percentage
@@ -57,6 +61,7 @@ export default function RegisterForm( ) {
                         ...recomData,
                         image_url: downloadURL
                     }
+                    console.log(finalData)
                     db.collection('recommendations').doc().set(finalData)
                     .then(()=>{
                         toast.dark("Su propuesta se ha enviado con exito 🤗")
@@ -121,12 +126,7 @@ export default function RegisterForm( ) {
                 </progress>
             }
 
-            {
-                useMemo(()=>{
-                    return <InputFile previews={values.img_url && URL.createObjectURL(values?.img_url)} onChange={ handleInputChange } name="img_url" placeholder="igresa una imagen" />
-                    // eslint-disable-next-line react-hooks/exhaustive-deps
-                },[values.img_url])
-            }
+            <InputFile previews={values.img_url && URL.createObjectURL(values?.img_url)} onChange={ handleInputChange } name="img_url" placeholder="igresa una imagen" />
 
             <button type="submit" className="btn btn__primary">{loading? <Spinner/>: "Enviar recomendacion"}</button>
 

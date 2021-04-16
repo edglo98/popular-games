@@ -1,39 +1,35 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 import CardGame from '../../components/CardGame/CardGame'
-import {db} from '../../firebase'
+import Spinner from '../../components/Spinner'
+import useRequestCollect from '../../hooks/useRequestCollect'
 
 export default function GamesPage() {
+    const { get, data, loading, error } = useRequestCollect({collection: 'recommendations', filter: ["publish","==",true] })
 
-    const [games, setGames] = useState([])
-
-    const getGames = async () =>{
-        db.collection("recommendations").onSnapshot(
-            (querySnapshot) =>{
-                const docs = [];
-                querySnapshot.forEach((doc) => {
-                    docs.push({...doc.data(), id:doc.id})
-                });
-                setGames(docs);
-        });
-    }
-
-    useEffect(() =>{
-        getGames();
-    }, []);
+    useEffect(()=>{
+        get()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[ ])
 
     return (
         
         <div>
-            {games.map(games => (
-
-                <CardGame
-                key={games.id}
-                title={games.name}
-                img={games.image_url}
-                sub={games.company} 
-                />
-
-            ))}    
+            {
+                loading 
+                ? <Spinner />
+                : error
+                    ? <div>
+                        { error.message }
+                    </div>
+                    : data.map( games => {
+                        return <CardGame
+                                key={games.id}
+                                title={games.name}
+                                img={games.image_url}
+                                sub={games.company} 
+                            />
+                    })
+            }  
         </div>
     )
 }
