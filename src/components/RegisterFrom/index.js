@@ -20,9 +20,9 @@ export default function RegisterForm( ) {
         if(values.password===values.password2){
             await createNewUser(values.email, values.password)
             .then( currentUser => {
-                
                 currentUser.user.updateProfile({
-                    displayName: values.displayName
+                    displayName: values.displayName,
+                    isAdmin: true
                 });
                 setUser({logedin: true, ...currentUser})
 

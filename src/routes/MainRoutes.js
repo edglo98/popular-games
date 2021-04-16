@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import {
     Switch,
     Route,
@@ -11,9 +11,27 @@ import GamesPage from '../pages/GamesPage'
 import DashCrud from '../pages/DashCrud'
 import RecomPage from '../pages/RecomPage';
 import { ToastContainer } from 'react-toastify';
+import { db } from '../firebase';
+import { UserContext } from '../context/UserContext';
+import AdminPage from '../pages/AdminPage';
 
 
 export default function AppRouter() {
+    const [ isAdmin, setIsAdmin ] = useState( false )
+    const { user } = useContext( UserContext )
+
+
+    useEffect(() =>{
+        if(user.uid){
+            ;(async () =>{
+                const refAdmin = await db.collection("admins")
+                const a = await refAdmin.where('uid_admins', 'array-contains', user.uid).get()
+                setIsAdmin(!a.empty)
+            }
+            )()
+        }
+    }, [ user.uid ]);
+
     return (
         <>
         <Navbar/>
@@ -27,6 +45,9 @@ export default function AppRouter() {
             margin: "2em auto"
         }}>
             <Switch>
+                {
+                    isAdmin && <Route exact path="/admin" component={ AdminPage } />
+                }
                 <Route exact path="/" component={ HomePage } />
                 <Route path="/game" component={ GamePage } />
                 <Route path="/recom" component={ RecomPage } />

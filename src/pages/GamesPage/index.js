@@ -27,6 +27,7 @@ export default function GamesPage() {
             {games.map(games => (
 
                 <CardGame
+                key={games.id}
                 title={games.name}
                 img={games.image_url}
                 sub={games.company} 

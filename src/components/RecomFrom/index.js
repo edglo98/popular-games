@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import "./styles.css"
 import firebase from 'firebase'
 import InputFile from '../InputFile'
@@ -23,6 +23,8 @@ export default function RegisterForm( ) {
             company: data?.company || "",
             plataform: data?.plataform || "",
             description: data?.description || "",
+            publish: false,
+            rate: 1
         }
 
         const imgFile = data?.img_url
@@ -95,13 +97,13 @@ export default function RegisterForm( ) {
                 src={images.Sonic5} 
             />
             
-            <input className="form__input" value={values.name} type="text" onChange={ handleInputChange } name="name" required placeholder="Escribe el nombre completo del juego" autoComplete="false" />
+            <input autocomplete='off' className="form__input" value={values.name} type="text" onChange={ handleInputChange } name="name" required placeholder="Escribe el nombre completo del juego" autoComplete="false" />
 
             <input className="form__input" value={values.company} type="text" onChange={ handleInputChange } name="company" required placeholder="Escribe el estudio al que pertenece" autoComplete="false" />
             
             <select className="form__input" value={values.plataform} onChange={handleInputChange} name="plataform">
 
-                <option>Seleccione...</option>
+                <option>Plataforma...</option>
                 <option value="MULTI">Multiplataforma</option>
                 <option value="PS4">PS4</option>
                 <option value="XBOX">XBOX</option>
@@ -118,7 +120,13 @@ export default function RegisterForm( ) {
                     {porcentage} %
                 </progress>
             }
-            <InputFile previews={values.img_url && URL.createObjectURL(values?.img_url)} onChange={ handleInputChange } name="img_url" placeholder="igresa una imagen" />
+
+            {
+                useMemo(()=>{
+                    return <InputFile previews={values.img_url && URL.createObjectURL(values?.img_url)} onChange={ handleInputChange } name="img_url" placeholder="igresa una imagen" />
+                    // eslint-disable-next-line react-hooks/exhaustive-deps
+                },[values.img_url])
+            }
 
             <button type="submit" className="btn btn__primary">{loading? <Spinner/>: "Enviar recomendacion"}</button>
 
