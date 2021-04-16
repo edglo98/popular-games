@@ -1,11 +1,25 @@
-import React, { useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import React, { useContext, useState } from 'react'
+import { Link, NavLink, useHistory } from 'react-router-dom'
 import "./styles.css"
 import HamburguerMenu from '../HamburguerMenu'
+import { UserContext } from '../../context/UserContext'
+import { logout } from '../../utils/auth'
 
 export default function Navbar() {
+    const [ menu, setMenu ] = useState(false)
+    const { user, setUser } = useContext( UserContext )
+    const history = useHistory()
 
-    const [menu, setMenu] = useState(false)
+    const handleLogout = () => {
+        logout()
+        .then(()=>{
+            setUser({logedin: false})
+            history.push('/login')
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    }
 
     return (
         <nav className="navbar">
@@ -17,14 +31,12 @@ export default function Navbar() {
                 <span>PopGames</span>
             </Link>
 
-
             <div className="hamburguer-menu_view">
                 <HamburguerMenu 
                     setState={setMenu}
                     state={menu}
                 />
             </div>
-
 
             <ul  className={`navbar-menu ${menu || "navbar-menu__close"}`}>
                 <NavLink 
@@ -51,12 +63,21 @@ export default function Navbar() {
                 >
                     Recomendar
                 </NavLink>
-                <NavLink 
-                    to="/login" 
-                    className="navbar-menu__link navbar-menu__logout"
-                >
-                    Cerrar sesión
-                </NavLink>
+                {
+                    !user.logedin 
+                        ? <NavLink 
+                            to="/login" 
+                            className="navbar-menu__link navbar-menu__login"
+                        >
+                            Iniciar sesión
+                        </NavLink>
+                        : <button
+                            className="navbar-menu__link navbar-menu__logout"
+                            onClick={ handleLogout }
+                        >
+                            Cerrar sesión
+                        </button>
+                }
             </ul>
 
         </nav>

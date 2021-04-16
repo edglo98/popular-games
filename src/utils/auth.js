@@ -11,3 +11,7 @@ export const createNewUser = async(email, password ) => {
 export const loginUser = async(email, password) => {
     return await firebase.auth().signInWithEmailAndPassword( email, password );
 }
+
+export const logout = async() => {
+    return await firebase.auth().signOut()
+}
